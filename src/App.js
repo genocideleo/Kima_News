@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/core/styles';
+import Theme from './Components/Styles/Theme';
+import Home from './Components/Home.js';
+import Crime from './Components/Crime.js';
+import Business from './Components/Business.js';
+import Enter from './Components/Enter.js';
+import Fash from './Components/Fash.js';
+import Inter from './Components/Inter.js';
+// import Landing from './Components/Topbar.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={Theme}>
+        <Router>
+          <Routes>
+            <Route exact path='/' element={<Home />}></Route>
+            <Route exact path='/crime' element={<Crime />}></Route>
+            <Route exact path='/business' element={<Business />}></Route>
+            <Route exact path='/entertainment' element={<Enter />}></Route>
+            <Route exact path='/fashion' element={<Fash />}></Route>
+            <Route exact path='/international' element={<Inter />}></Route>
+          </Routes>
+        </Router>
+      </ThemeProvider>
+    </>
   );
 }
 
